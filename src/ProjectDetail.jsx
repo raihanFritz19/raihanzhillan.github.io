@@ -56,7 +56,7 @@ const PROJECT_DETAILS = {
         desc: "Merancang struktur database MySQL dengan relasi antar tabel produk, order, user, dan transaksi yang optimal.",
       },
     ],
-    tech: ["Framework Laravel", "PHP 7", "MySQL", "Midtrans API", "Bootstrap", "jQuery"],
+    tech: ["Framework Laravel", "PHP 7", "MySQL", "Midtrans API"],
     github: "https://github.com/raihanFritz19",
     color: "#00f5d4",
   },
