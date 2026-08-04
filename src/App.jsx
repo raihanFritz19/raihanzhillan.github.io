@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
+import ProjectDetail from "./ProjectDetail.jsx";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -31,13 +32,14 @@ const SKILLS = [
 
 const PROJECTS = [
   {
+    id: "larizza",
     title: "E-Commerce Toko Larizza",
     type: "Full-Stack & AI-Assisted",
-    desc: "Online shop for an UMKM in Bekasi Selatan — complete with real-time Midtrans payment gateway, WhatsApp chatbot integration, and automated stock management.",
+    desc: "Online shop untuk UMKM di Bekasi Selatan — lengkap dengan payment gateway Midtrans real-time, integrasi chatbot WhatsApp, dan manajemen stok otomatis.",
     features: [
-      "Midtrans Payment Gateway — secure real-time transactions",
-      "AI Chatbot — customer support automation",
-      "Full catalog, cart & checkout flow",
+      "Midtrans Payment Gateway — transaksi real-time yang aman",
+      "AI Chatbot — otomatisasi customer support",
+      "Katalog, keranjang, dan alur checkout lengkap",
     ],
     tech: ["CodeIgniter", "MySQL", "Midtrans", "PHP"],
     github: "https://github.com/raihanFritz19",
@@ -45,32 +47,19 @@ const PROJECTS = [
     image: "/foto-image-larizza.png",
   },
   {
+    id: "bimbel",
     title: "Sistem Informasi Bimbel Abuwafa",
     type: "Fullstack & QA Testing",
-    desc: "Tutoring management system covering scheduling, salary automation, and comprehensive bug-reporting documentation before production deployment.",
+    desc: "Sistem manajemen lembaga bimbingan belajar — mencakup penjadwalan, kalkulasi gaji otomatis, dan dokumentasi bug testing sebelum deployment ke production.",
     features: [
-      "Database Testing — MySQL relation validation & SQL query optimization",
-      "Automated scheduling & salary calculation",
-      "Bug management (Actual vs Expected reports)",
+      "Database Testing — validasi relasi MySQL &amp; optimasi query",
+      "Penjadwalan otomatis &amp; kalkulasi gaji pengajar",
+      "Manajemen bug (Actual vs Expected reports)",
     ],
     tech: ["CodeIgniter", "MySQL", "QA Testing", "Manual Testing"],
     github: "https://github.com/raihanFritz19/bimbel-sekolah",
     color: "#7c3aed",
     image: "/bimbel222.png",
-  },
-  {
-    title: "Website Toko Cahaya Perabot",
-    type: "Web Developer",
-    desc: "E-commerce website built to help a household furniture UMKM sell online, featuring a product catalog, shopping cart, and integrated payment checkout.",
-    features: [
-      "Midtrans Payment Gateway integration",
-      "Full product catalog & secure checkout",
-      "Mobile-responsive design",
-    ],
-    tech: ["CodeIgniter", "MySQL", "PHP", "HTML/CSS"],
-    github: "https://github.com/raihanFritz19/Website-Toko-Perabotan",
-    color: "#f59e0b",
-    image: "/image3.png",
   },
 ];
 
@@ -79,21 +68,21 @@ const TIMELINE = [
     period: "May 2025 – Sep 2025",
     role: "E-Commerce System Developer",
     place: "Toko Larizza (UMKM) — Bekasi Selatan",
-    desc: "Developed an online shopping system with secure real-time payment integration and enhanced customer communication via AI chatbot.",
+    desc: "Membangun sistem belanja online dengan integrasi payment gateway real-time dan komunikasi pelanggan via AI chatbot.",
     isWork: true,
   },
   {
     period: "Oct 2024 – Jan 2025",
     role: "Web Developer & QA Tester",
     place: "Bimbel Abuwafa — Bekasi Selatan",
-    desc: "Built a CodeIgniter-based management app, maintained systematic bug-reporting documentation, and conducted manual testing before hosting.",
+    desc: "Membangun aplikasi manajemen berbasis CodeIgniter, mendokumentasikan bug secara sistematis, dan melakukan pengujian manual sebelum hosting.",
     isWork: true,
   },
   {
     period: "2021 – 2025",
     role: "Bachelor of Information Systems",
     place: "Universitas Gunadarma",
-    desc: "Focused on web application development, database management, and systems analysis. Graduated with a GPA of 3.56.",
+    desc: "Fokus pada pengembangan aplikasi web, manajemen database, dan analisis sistem. Lulus dengan IPK 3.56.",
     isWork: false,
   },
 ];
@@ -147,7 +136,7 @@ function useFadeIn(ref) {
 ───────────────────────────────────────────── */
 
 /* Navbar */
-function Navbar() {
+function Navbar({ onLogoClick }) {
   const active = useScrollSpy();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -161,11 +150,12 @@ function Navbar() {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
     setMenuOpen(false);
+    if (onLogoClick) onLogoClick();
   };
 
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
-      <button className="logo" onClick={() => scrollTo("home")} aria-label="Go to top">
+      <button className="logo" onClick={() => { scrollTo("home"); }} aria-label="Go to top">
         Raihan<span className="logo-dot">.</span>
       </button>
 
@@ -301,25 +291,25 @@ function About() {
       <SectionHeader
         label="About"
         title={<>About <span className="accent">Me</span></>}
-        sub="Combining system development expertise with comprehensive software testing."
+        sub="Menggabungkan keahlian pengembangan sistem dengan pengujian software yang komprehensif."
       />
       <div className="about-grid">
         <div className="about-text fade-in">
           <p>
-            I am a <strong>Bachelor of Information Systems</strong> graduate from Universitas Gunadarma (GPA 3.56),
-            specializing in PHP web application development and Software Quality Assurance.
+            Saya adalah lulusan <strong>Sistem Informasi</strong> dari Universitas Gunadarma (IPK 3.56),
+            dengan spesialisasi di pengembangan aplikasi web PHP dan Software Quality Assurance.
           </p>
           <p>
-            I manage the full software development lifecycle (SDLC), conduct functional testing, report bugs
-            systematically, and optimize SQL databases ensuring both functionality and integrity at every
-            layer. I also leverage <strong>AI tools and prompt engineering</strong> to accelerate development,
-            automate repetitive tasks, and catch errors faster than traditional approaches.
+            Saya mengelola siklus pengembangan software (SDLC) secara menyeluruh, melakukan functional testing,
+            melaporkan bug secara sistematis, dan mengoptimasi database SQL untuk memastikan fungsionalitas
+            dan integritas di setiap lapisan. Saya juga memanfaatkan <strong>AI tools dan prompt engineering</strong>{" "}
+            untuk mempercepat development, mengotomasi tugas berulang, dan mendeteksi error lebih cepat.
           </p>
           <div className="stat-strip">
             {[
-              { v: "3.56", l: "GPA" },
+              { v: "3.56", l: "IPK" },
               { v: "3+", l: "Projects" },
-              { v: "SDLC", l: "Methodology" },
+              { v: "SDLC", l: "Metodologi" },
               { v: "AI", l: "Enhanced Dev" },
             ].map(({ v, l }) => (
               <div key={l} className="stat">
@@ -331,8 +321,8 @@ function About() {
         </div>
 
         <div className="cert-panel fade-in">
-          <h3 className="panel-title">🏅 Certifications</h3>
-          <p className="panel-note">Click a card to view the e-certificate.</p>
+          <h3 className="panel-title">🏅 Sertifikasi</h3>
+          <p className="panel-note">Klik kartu untuk melihat e-sertifikat.</p>
           <div className="cert-list">
             {CERTS.map(({ label, icon, url }) => (
               <a key={label} href={url} target="_blank" rel="noreferrer" className="cert-card">
@@ -357,7 +347,7 @@ function Skills() {
       <SectionHeader
         label="Skills"
         title={<>Technical <span className="accent">Skills</span></>}
-        sub="Technologies and tools I use in development and testing."
+        sub="Teknologi dan tools yang saya gunakan dalam development dan testing."
       />
       <div className="skills-grid-outer">
         {SKILLS.map(({ icon, title, items }, i) => (
@@ -381,72 +371,75 @@ function Skills() {
 }
 
 /* Projects */
-function Projects() {
+function Projects({ onOpenDetail }) {
   const ref = useRef(null);
   useFadeIn(ref);
+
   return (
     <section id="projects" ref={ref}>
       <SectionHeader
         label="Work"
         title={<>Featured <span className="accent">Projects</span></>}
-        sub="Real-world systems built with PHP, QA discipline, and AI-assisted development."
+        sub="Sistem nyata yang dibangun dengan PHP, disiplin QA, dan AI-assisted development."
       />
       <div className="projects-list">
-        {PROJECTS.map(({ title, type, desc, features, tech, github, color, image }, i) => (
-          <article
-            key={title}
-            className="project-card fade-in"
-            style={{ "--accent": color, "--delay": `${i * 0.12}s` }}
-          >
-            <div className="project-image-wrap">
-              <img
-                src={image}
-                alt={`Screenshot of ${title}`}
-                className="project-img"
-                loading="lazy"
-              />
-              <div className="project-img-overlay">
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="overlay-github-btn"
-                  aria-label={`View ${title} on GitHub`}
-                >
-                  View on GitHub ↗
-                </a>
-              </div>
-              <div className="project-img-bar" />
-            </div>
-
-            <div className="project-body">
-              <span className="project-type">{type}</span>
-              <h3 className="project-title">{title}</h3>
-              <p className="project-desc">{desc}</p>
-              <ul className="project-features">
-                {features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-              <div className="project-footer">
-                <div className="project-tech">
-                  {tech.map((t) => (
-                    <span key={t} className="tech-tag">{t}</span>
-                  ))}
+        {PROJECTS.map((project, i) => {
+          const { title, type, desc, features, tech, github, color, image } = project;
+          return (
+            <article
+              key={title}
+              className="project-card fade-in"
+              style={{ "--accent": color, "--delay": `${i * 0.12}s` }}
+            >
+              {/* Gambar project — klik untuk buka halaman detail */}
+              <div
+                className="project-image-wrap"
+                onClick={() => onOpenDetail(project)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Lihat detail project ${title}`}
+                onKeyDown={(e) => e.key === "Enter" && onOpenDetail(project)}
+                style={{ cursor: "pointer" }}
+              >
+                <img
+                  src={image}
+                  alt={`Screenshot of ${title}`}
+                  className="project-img"
+                  loading="lazy"
+                />
+                <div className="project-img-overlay">
+                  <span className="overlay-detail-btn">Lihat Detail ↗</span>
                 </div>
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="project-link"
-                  aria-label={`GitHub for ${title}`}
-                >
-                  GitHub ↗
-                </a>
+                <div className="project-img-bar" />
               </div>
-            </div>
-          </article>
-        ))}
+
+              <div className="project-body">
+                <span className="project-type">{type}</span>
+                <h3 className="project-title">{title}</h3>
+                <p className="project-desc">{desc}</p>
+                <ul className="project-features">
+                  {features.map((f) => (
+                    <li key={f} dangerouslySetInnerHTML={{ __html: f }} />
+                  ))}
+                </ul>
+                <div className="project-footer">
+                  <div className="project-tech">
+                    {tech.map((t) => (
+                      <span key={t} className="tech-tag">{t}</span>
+                    ))}
+                  </div>
+                  <button
+                    className="project-link"
+                    onClick={() => onOpenDetail(project)}
+                    aria-label={`Detail ${title}`}
+                  >
+                    Detail →
+                  </button>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
@@ -461,7 +454,7 @@ function Experience() {
       <SectionHeader
         label="Journey"
         title={<>Education &amp; <span className="accent">Experience</span></>}
-        sub="Academic path and hands-on development work."
+        sub="Perjalanan akademik dan pekerjaan pengembangan nyata."
       />
       <div className="timeline">
         {TIMELINE.map(({ period, role, place, desc, isWork }, i) => (
@@ -470,7 +463,6 @@ function Experience() {
             className="timeline-item fade-in"
             style={{ "--delay": `${i * 0.15}s` }}
           >
-            {/* FIX: convert boolean to string for DOM attribute */}
             <div className="timeline-dot" data-work={isWork ? "true" : "false"} />
             <div className="timeline-content">
               <span className="timeline-period">{period}</span>
@@ -506,12 +498,12 @@ function Contact() {
       <SectionHeader
         label="Contact"
         title={<>{"Let's"} <span className="accent">Connect</span></>}
-        sub="Open to career opportunities in Web Development and Quality Assurance."
+        sub="Terbuka untuk peluang karier di Web Development dan Quality Assurance."
       />
       <div className="contact-grid">
         <div className="contact-info fade-in">
-          <h3>Contact Information</h3>
-          <p>Feel free to reach out via email, WhatsApp, or connect on LinkedIn.</p>
+          <h3>Informasi Kontak</h3>
+          <p>Hubungi saya via email, WhatsApp, atau terhubung di LinkedIn.</p>
           <div className="contact-links">
             {[
               { href: "mailto:raihanzhillan19@gmail.com", icon: "✉️", label: "raihanzhillan19@gmail.com" },
@@ -542,11 +534,11 @@ function Contact() {
 
         <form className="contact-form fade-in" onSubmit={handleSubmit} noValidate>
           <div className="form-group">
-            <label htmlFor="cf-name">Full Name</label>
+            <label htmlFor="cf-name">Nama Lengkap</label>
             <input
               id="cf-name"
               type="text"
-              placeholder="Your name"
+              placeholder="Nama kamu"
               value={form.name}
               onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
               required
@@ -557,17 +549,17 @@ function Contact() {
             <input
               id="cf-email"
               type="email"
-              placeholder="your@email.com"
+              placeholder="kamu@email.com"
               value={form.email}
               onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="cf-msg">Message</label>
+            <label htmlFor="cf-msg">Pesan</label>
             <textarea
               id="cf-msg"
-              placeholder="Write your message here..."
+              placeholder="Tulis pesanmu di sini..."
               rows={5}
               value={form.msg}
               onChange={(e) => setForm((p) => ({ ...p, msg: e.target.value }))}
@@ -575,7 +567,7 @@ function Contact() {
             />
           </div>
           <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
-            {status === "sending" ? "Sending…" : status === "sent" ? "✅ Message Sent!" : "Send Message →"}
+            {status === "sending" ? "Mengirim…" : status === "sent" ? "✅ Pesan Terkirim!" : "Kirim Pesan →"}
           </button>
         </form>
       </div>
@@ -605,9 +597,38 @@ function SectionHeader({ label, title, sub }) {
 }
 
 /* ─────────────────────────────────────────────
-   APP ROOT
+   APP ROOT — page-based navigation
+   currentPage: "portfolio" | project object
 ───────────────────────────────────────────── */
 export default function App() {
+  const [currentPage, setCurrentPage] = useState("portfolio");
+
+  // Kembali ke portfolio dan scroll ke section projects
+  const handleBack = () => {
+    setCurrentPage("portfolio");
+    setTimeout(() => {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
+
+  // Buka halaman detail project
+  const handleOpenDetail = (project) => {
+    setCurrentPage(project);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Kalau sedang di halaman detail project
+  if (currentPage !== "portfolio") {
+    return (
+      <>
+        <Navbar onLogoClick={handleBack} />
+        <ProjectDetail project={currentPage} onBack={handleBack} />
+        <Footer />
+      </>
+    );
+  }
+
+  // Halaman utama portfolio
   return (
     <>
       <Navbar />
@@ -615,7 +636,7 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
-        <Projects />
+        <Projects onOpenDetail={handleOpenDetail} />
         <Experience />
         <Contact />
       </main>

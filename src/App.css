@@ -1,3 +1,10 @@
+/* ============================================================
+   Raihan Zhillan Portfolio — App.css
+   Design: Dark editorial / cyberpunk-minimal
+   Palette: #060b14 bg · #00f5d4 cyan accent · #7c3aed purple
+   Fonts: Syne (display) · DM Sans (body)
+   ============================================================ */
+
 /* ── Google Fonts ── */
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap");
 
@@ -568,7 +575,7 @@ section {
   opacity: 1;
 }
 
-.overlay-github-btn {
+.overlay-detail-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -584,7 +591,7 @@ section {
   box-shadow: 0 0 24px rgba(0,245,212,0.35);
 }
 
-.project-card:hover .overlay-github-btn {
+.project-card:hover .overlay-detail-btn {
   transform: translateY(0);
 }
 
