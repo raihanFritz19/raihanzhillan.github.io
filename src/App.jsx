@@ -15,7 +15,7 @@ const SKILLS = [
   {
     icon: "🗄️",
     title: "Database & Tools",
-    items: ["MySQL", "Query Optimization", "Database Design", "API", "API Testing" ],
+    items: ["MySQL", "Query Optimization", "Database Design", "API", "API Testing"],
   },
   {
     icon: "🧪",
@@ -208,19 +208,18 @@ function Hero() {
 
   return (
     <section id="home" className="hero">
-      {/* Animated grid background */}
       <div className="hero-grid" aria-hidden="true" />
 
       <div className="hero-content">
         <div className="hero-text">
           <div className="hero-tags" aria-label="Roles">
-            {["Web Developer", "QA Engineer", "AI Prompt Engineer"].map((t) => (
+            {["Web Developer", "QA Manual"].map((t) => (
               <span key={t} className="hero-tag">{t}</span>
             ))}
           </div>
 
           <h1 className="hero-heading">
-            Hi, I'm{" "}
+            {"Hi, I'm "}
             <span className="hero-name">
               {typed}
               <span className="cursor" aria-hidden="true">|</span>
@@ -234,10 +233,24 @@ function Hero() {
           </p>
 
           <div className="hero-actions">
-            <a href="#projects" className="btn btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }}>
-              View Projects <span aria-hidden="true">→</span>
+            <a
+              href="#projects"
+              className="btn btn-primary"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              View Projects <span aria-hidden="true">{"→"}</span>
             </a>
-            <a href="#contact" className="btn btn-ghost" onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}>
+            <a
+              href="#contact"
+              className="btn btn-ghost"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               Get in Touch
             </a>
           </div>
@@ -250,15 +263,15 @@ function Hero() {
           <div className="float-badge float-badge--1">
             <span className="badge-icon">🐛</span>
             <div>
-              <strong>QA Engineer</strong>
-              <small>Bug Reporting & Testing</small>
+              <strong>QA Manual</strong>
+              <small>Bug Reporting &amp; Testing</small>
             </div>
           </div>
           <div className="float-badge float-badge--2">
             <span className="badge-icon">⚡</span>
             <div>
               <strong>Web Dev</strong>
-              <small>PHP & CodeIgniter</small>
+              <small>PHP &amp; CodeIgniter</small>
             </div>
           </div>
           <div className="float-badge float-badge--3">
@@ -293,12 +306,12 @@ function About() {
       <div className="about-grid">
         <div className="about-text fade-in">
           <p>
-            I'm a <strong>Bachelor of Information Systems</strong> graduate from Universitas Gunadarma (GPA 3.56),
+            I am a <strong>Bachelor of Information Systems</strong> graduate from Universitas Gunadarma (GPA 3.56),
             specializing in PHP web application development and Software Quality Assurance.
           </p>
           <p>
             I manage the full software development lifecycle (SDLC), conduct functional testing, report bugs
-            systematically, and optimize SQL databases — ensuring both functionality and integrity at every
+            systematically, and optimize SQL databases ensuring both functionality and integrity at every
             layer. I also leverage <strong>AI tools and prompt engineering</strong> to accelerate development,
             automate repetitive tasks, and catch errors faster than traditional approaches.
           </p>
@@ -385,7 +398,6 @@ function Projects() {
             className="project-card fade-in"
             style={{ "--accent": color, "--delay": `${i * 0.12}s` }}
           >
-            {/* ── Project Screenshot Image ── */}
             <div className="project-image-wrap">
               <img
                 src={image}
@@ -422,7 +434,13 @@ function Projects() {
                     <span key={t} className="tech-tag">{t}</span>
                   ))}
                 </div>
-                <a href={github} target="_blank" rel="noreferrer" className="project-link" aria-label={`GitHub for ${title}`}>
+                <a
+                  href={github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-link"
+                  aria-label={`GitHub for ${title}`}
+                >
                   GitHub ↗
                 </a>
               </div>
@@ -442,13 +460,18 @@ function Experience() {
     <section id="experience" className="section-alt" ref={ref}>
       <SectionHeader
         label="Journey"
-        title={<>Education & <span className="accent">Experience</span></>}
+        title={<>Education &amp; <span className="accent">Experience</span></>}
         sub="Academic path and hands-on development work."
       />
       <div className="timeline">
         {TIMELINE.map(({ period, role, place, desc, isWork }, i) => (
-          <div key={role} className="timeline-item fade-in" style={{ "--delay": `${i * 0.15}s` }}>
-            <div className="timeline-dot" data-work={isWork} />
+          <div
+            key={role}
+            className="timeline-item fade-in"
+            style={{ "--delay": `${i * 0.15}s` }}
+          >
+            {/* FIX: convert boolean to string for DOM attribute */}
+            <div className="timeline-dot" data-work={isWork ? "true" : "false"} />
             <div className="timeline-content">
               <span className="timeline-period">{period}</span>
               <h3 className="timeline-role">{role}</h3>
@@ -482,11 +505,10 @@ function Contact() {
     <section id="contact" ref={ref}>
       <SectionHeader
         label="Contact"
-        title={<>Let's <span className="accent">Connect</span></>}
+        title={<>{"Let's"} <span className="accent">Connect</span></>}
         sub="Open to career opportunities in Web Development and Quality Assurance."
       />
       <div className="contact-grid">
-        {/* Info */}
         <div className="contact-info fade-in">
           <h3>Contact Information</h3>
           <p>Feel free to reach out via email, WhatsApp, or connect on LinkedIn.</p>
@@ -496,23 +518,28 @@ function Contact() {
               { href: "https://wa.me/6282111851631", icon: "💬", label: "+62 821-1185-1631" },
               { href: "#", icon: "📍", label: "Jakarta, Indonesia" },
             ].map(({ href, icon, label }) => (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="contact-link">
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+                className="contact-link"
+              >
                 <span className="cl-icon">{icon}</span>
                 <span>{label}</span>
               </a>
             ))}
           </div>
           <div className="social-row">
-            <a href="https://github.com/raihanFritz19" target="_blank" rel="noreferrer" className="social-btn" aria-label="GitHub">
+            <a href="https://github.com/raihanFritz19" target="_blank" rel="noreferrer" className="social-btn">
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/raihan-zhillan-806858346" target="_blank" rel="noreferrer" className="social-btn" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/raihan-zhillan-806858346" target="_blank" rel="noreferrer" className="social-btn">
               LinkedIn
             </a>
           </div>
         </div>
 
-        {/* Form */}
         <form className="contact-form fade-in" onSubmit={handleSubmit} noValidate>
           <div className="form-group">
             <label htmlFor="cf-name">Full Name</label>
@@ -561,6 +588,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>© {new Date().getFullYear()} <span className="accent">Raihan Zhillan</span>. All rights reserved.</p>
+      <p className="footer-sub">Built with React · Crafted with AI tools</p>
     </footer>
   );
 }
