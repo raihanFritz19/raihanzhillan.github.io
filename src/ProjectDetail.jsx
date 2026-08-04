@@ -21,7 +21,7 @@ const PROJECT_DETAILS = {
     client: "Toko Larizza — Bekasi Selatan",
     status: "Production",
     overview:
-      "Toko Larizza adalah proyek e-commerce untuk UMKM Makanan Ringan di Bekasi Selatan. Saya membangun sistem belanja online lengkap dari nol — mulai dari desain database, backend Framework Laravael (PHP) DAN MYSQL, integrasi payment gateway Midtrans, hingga chatbot WhatsApp berbasis AI untuk customer service otomatis.",
+      "Toko Larizza adalah proyek e-commerce untuk UMKM Makanan Ringan di Bekasi Selatan. Saya membangun sistem belanja online — mulai dari desain database, backend Framework Laravael (PHP) DAN MYSQL, integrasi payment gateway Midtrans, hingga chatbot WhatsApp berbasis AI untuk customer service otomatis.",
     photos: [
       { src: "/foto-image-larizza.png", caption: "Tampilan Halaman Utama Toko Larizza" },
       { src: "/larizza-login.jpg", caption: "Halaman login" },
