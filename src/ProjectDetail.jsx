@@ -21,7 +21,7 @@ const PROJECT_DETAILS = {
     client: "Toko Larizza — Bekasi Selatan",
     status: "Production",
     overview:
-      "Toko Larizza adalah proyek e-commerce untuk UMKM fashion di Bekasi Selatan. Saya membangun sistem belanja online lengkap dari nol — mulai dari desain database, backend CodeIgniter, integrasi payment gateway Midtrans, hingga chatbot WhatsApp berbasis AI untuk customer service otomatis.",
+      "Toko Larizza adalah proyek e-commerce untuk UMKM Makanan Ringan di Bekasi Selatan. Saya membangun sistem belanja online lengkap dari nol — mulai dari desain database, backend CodeIgniter, integrasi payment gateway Midtrans, hingga chatbot WhatsApp berbasis AI untuk customer service otomatis.",
     photos: [
       { src: "/foto-image-larizza.png", caption: "Tampilan Halaman Utama Toko Larizza" },
       // Tambah foto lain di sini:
@@ -42,7 +42,7 @@ const PROJECT_DETAILS = {
       },
       {
         icon: "🤖",
-        title: "AI Chatbot WhatsApp",
+        title: "AI Chatbot",
         desc: "Mengimplementasikan chatbot otomatis untuk menjawab pertanyaan pelanggan seputar produk, stok, dan status pesanan.",
       },
       {
@@ -56,7 +56,7 @@ const PROJECT_DETAILS = {
         desc: "Merancang struktur database MySQL dengan relasi antar tabel produk, order, user, dan transaksi yang optimal.",
       },
     ],
-    tech: ["CodeIgniter 3", "PHP 7", "MySQL", "Midtrans API", "Bootstrap", "jQuery"],
+    tech: ["Framework Laravel", "PHP 7", "MySQL", "Midtrans API", "Bootstrap", "jQuery"],
     github: "https://github.com/raihanFritz19",
     color: "#00f5d4",
   },
