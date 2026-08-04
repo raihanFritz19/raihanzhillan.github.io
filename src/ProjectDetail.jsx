@@ -16,7 +16,7 @@ const PROJECT_DETAILS = {
   larizza: {
     subtitle: "Sistem E-Commerce UMKM Berbasis Web",
     category: "Web Development",
-    duration: "Mei 2025 – September 2025",
+    duration: "Januari 2025 – September 2025",
     role: "Full-Stack Developer",
     client: "Toko Larizza — Bekasi Selatan",
     status: "Production",
