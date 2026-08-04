@@ -25,7 +25,7 @@ const PROJECT_DETAILS = {
     photos: [
       { src: "/foto-image-larizza.png", caption: "Tampilan Halaman Utama Toko Larizza" },
       { src: "/larizza-login.jpg", caption: "Halaman login" },
-      { src: "/larizza-produk.jpg", caption: "Dashboard Admin" },
+      { src: "/larizza-produk.jpg", caption: "Halaman Produk" },
       // { src: "/larizza-mobile.png", caption: "Tampilan Mobile" },
     ],
     whatIDid: [
